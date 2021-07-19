@@ -25,31 +25,107 @@
                     <button type="button" class=" btn btn-info" id="searchButton"><i class="fas fa-search"></i>
                 </div>
             </div>
+
+            <!-- today's Forecast -->
             <div class="card bg-color-light mt-4 mt-md-0">
                 <h3 class="card-header text-uppercase bg-secondary text-light">Today's Forecast</h3>
                 <div class="containter">
                     <div class="row">
-                        <img class="weather-icon" id="currentIcon"/>
+                        <img class="weather-icon" id="todayIcon"/>
                         <span class="align-middle" id="cityName">City Name</span>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <p class="pl-3">Temperature: <span id="currentTemperature"></span>&deg;F</p>
-                            <p class="pl-3">Condition: <span id="currentConditions"></span></p>
-                            <p class="pl-3">Humidity: <span id="currentHumidity"></span>%</p>
+                            <p class="pl-3">Temperature: <span id="todayTemperature"></span>&deg;F</p>
+                            <p class="pl-3">Condition: <span id="todayConditions"></span></p>
+                            <p class="pl-3">Humidity: <span id="todayHumidity"></span>%</p>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="pl-3">High: <span id="currentHigh"></span> &deg;F</p>
-                            <p class="pl-3">Low: <span id="currentLow"></span> &deg;F</p>
-                            <p class="pl-3">Wind Speed: <span id="currentWindSpeed"></span> MPH</p>
-                            <p class="pl-3">UV Index: <span id="currentUvIndex"></span></p>
+                            <p class="pl-3">High: <span id="todayHigh"></span> &deg;F</p>
+                            <p class="pl-3">Low: <span id="todayLow"></span> &deg;F</p>
+                            <p class="pl-3">Wind Speed: <span id="todayWindSpeed"></span> MPH</p>
+                            <p class="pl-3">UV Index: <span id="todayUvIndex"></span></p>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- five day forecast -->
+            <div class="card bg-color-light mt-4">
+                <h3 class="card-header text-uppercase bg-secondary text-light">Five Day Forecast</h3>
+                <div class="container p-3">
+                    <!-- day one -->
+                    <div class="row row-cols-1 row-cols-md-5">
+                        <div class="col">
+                            <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                                <p class="badge badge-light mb-1" id="day-1"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="weatherIcon-1">
+                                    <span id="fdTemp-1"></span> &deg;F
+                                </h4>
+                                <p class="mb-1">High: <span id="fdHigh-1"></span> &deg;F</p>
+                                <p class="mb-1">Low: <span id="fdLow-1"></span> &deg;F</p>
+                                <p class="mb-1">Humidity: <span id="fdHumidity-1"></span>%</p>
+                            </div>
+                        </div>
+
+                        <!-- day two -->
+                        <div class="col">
+                            <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                                <p class="badge badge-light mb-1" id="day-2"></p>
+                                <h4 class="align-middle" >
+                                    <img class="weather-icon" id="weatherIcon-2">
+                                    <span id="fdTemp-2"></span> &deg;F
+                                </h4>
+                                <p class="mb-1">High: <span id="fdHigh-2"></span> &deg;F</p>
+                                <p class="mb-1">Low: <span id="fdLow-2"></span> &deg;F</p>
+                                <p class="mb-1">Humidity: <span id="fdHumidity-2"></span>%</p>
+                            </div>
+                        </div>
+
+                        <!-- day three -->
+                        <div class="col">
+                            <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                                <p class="badge badge-light mb-1" id="day-3"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="weatherIcon-3">
+                                    <span id="fdTemp-3"></span> &deg;F
+                                </h4>
+                                <p class="mb-1">High: <span id="fdHigh-3"></span> &deg;F</p>
+                                <p class="mb-1">Low: <span id="fdLow-3"></span> &deg;F</p>
+                                <p class="mb-1">Humidity: <span id="fdHumidity-3"></span>%</p>
+                            </div>
+                        </div>
+
+                        <!-- day four -->
+                        <div class="col">
+                            <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                                <p class="badge badge-light mb-1" id="day-4"></p>
+                                <h4 class="align-middle" >
+                                    <img class="weather-icon" id="weatherIcon-4">
+                                    <span id="fdTemp-4"></span> &deg;F
+                                </h4>
+                                <p class="mb-1">High: <span id="fdHigh-4"></span> &deg;F</p>
+                                <p class="mb-1">Low: <span id="fdLow-4"></span> &deg;F</p>
+                                <p class="mb-1">Humidity: <span id="fdHumidity-4"></span>%</p>
+                            </div>
+                        </div>
+
+                        <!-- day five -->
+                        <div class="col">
+                            <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                                <p class="badge badge-light mb-1" id="day-5"></p>
+                                <h4 class="align-middle" >
+                                    <img class="weather-icon" id="weatherIcon-5">
+                                    <span id="fdTemp-5"></span> &deg;F
+                                </h4>
+                                <p class="mb-1">High: <span id="fdHigh-5"></span> &deg;F</p>
+                                <p class="mb-1">Low: <span id="fdLow-5"></span> &deg;F</p>
+                                <p class="mb-1">Humidity: <span id="fdHumidity-5"></span>%</p>
+                            </div>
+                        </div>
         </div>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
