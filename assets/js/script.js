@@ -6,9 +6,9 @@ var cityName = document.querySelector('#cityName');
 var cityList = [];
 
 
-var cityForm = function(event) {
+var cityForm = function (event) {
     var cityChoice = cityInput.value
-  
+
     if (cityChoice) {
         getCityCoordinates(cityChoice);
         cityInput.value = '';
@@ -21,22 +21,23 @@ searchBtn.addEventListener('click', cityForm)
 var getCityCoordinates = function (city) {
     var currentWeatherData = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
     fetch(currentWeatherData).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (data) {
-                    var longitude = data.coord['lon'];
-                    var latitude = data.coord['lat'];
-                    getCityWeather(city, longitude, latitude);
+        if (response.ok) {
+            response.json().then(function (data) {
+                var longitude = data.coord['lon'];
+                var latitude = data.coord['lat'];
+                getCityWeather(city, longitude, latitude);
 
-                    // saves searched city and refreshes recent city list
+                // saves searched city and refreshes recent city list
                 if (document.querySelector('.city-list')) {
                     document.querySelector('.city-list').remove();
                 }
 
                 storeCity(city);
-                });
-            }
-        })
-        
+                pullCity()
+            });
+        }
+    })
+
 }
 // Longitude and Latitude to fetch today's weather
 var getCityWeather = function (city, longitude, latitude) {
@@ -48,21 +49,21 @@ var getCityWeather = function (city, longitude, latitude) {
 
                 cityName.textContent = `${city} (${moment().format("M/D/YYYY")})`;
 
-                currentWeather(data);
+                todayWeather(data);
                 showFiveDay(data);
             });
         }
     })
 }
 
-var showTemp = function(element, temperature) {
+var showTemp = function (element, temperature) {
     var temp = document.querySelector(element);
     var tempText = Math.round(temperature);
     temp.textContent = tempText;
 }
 
 //show today's weather
-var currentWeather = function (forecast) {
+var todayWeather = function (forecast) {
 
     var peekabooForecast = document.querySelector('.peekabooForecast');
     peekabooForecast.classList.remove('hide');
@@ -91,8 +92,8 @@ var currentWeather = function (forecast) {
 }
 
 // show five day forecast
-var showFiveDay = function(forecast) { 
-    
+var showFiveDay = function (forecast) {
+
     for (var i = 1; i < 6; i++) {
         var fiveDay = document.querySelector('#day-' + i);
         fiveDay.textContent = moment().add(i, 'days').format('M/D/YYYY');
@@ -111,13 +112,13 @@ var showFiveDay = function(forecast) {
 
         var fiveDayWindSpeed = document.querySelector('#fdWindSpeed-' + i)
         fiveDayWindSpeed.textContent = forecast.daily[i].wind_speed;
-        }
+    }
 
-        
+
 }
 
 // store city
-var storeCity = function(city) {
+var storeCity = function (city) {
 
     for (var i = 0; i < cityList.length; i++) {
         if (city === cityList[i]) {
@@ -128,4 +129,37 @@ var storeCity = function(city) {
     localStorage.setItem('cities', JSON.stringify(cityList));
 }
 
+// pull city from storage
+var pullCity = function () {
+    cityList = JSON.parse(localStorage.getItem('cities'));
 
+    if (!cityList) {
+        cityList = [];
+        return false;
+    }
+
+    var storedCities = document.querySelector('#storedCities');
+    var listCities = document.createElement('ul');
+    listCities.className = 'list-group list-group-flush city-list';
+    storedCities.appendChild(listCities);
+
+    for (var i = 0; i < cityList.length; i++) {
+        var recentCityList = document.createElement('button');
+        recentCityList.setAttribute('type', 'button');
+        recentCityList.className = 'list-group-item';
+        recentCityList.setAttribute('value', cityList[i]);
+        recentCityList.textContent = cityList[i];
+        listCities.prepend(recentCityList);
+    }
+
+    var cityList = document.querySelector('.city-list');
+    cityList.addEventListener('click', citySearchHistory)
+}
+
+var citySearchHistory = function (event) {
+    var selectCity = event.target.getAttribute('value');
+
+    getCityCoordinates(selectCity);
+}
+
+pullCity();
