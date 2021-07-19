@@ -3,6 +3,7 @@ var apiKey = "1a6294fb43846f1aaf25f430265df8b2";
 var searchBtn = document.querySelector('#searchButton');
 var cityInput = document.querySelector('#cityInput');
 var cityName = document.querySelector('#cityName');
+var cityList = [];
 
 
 var cityForm = function(event) {
@@ -25,6 +26,13 @@ var getCityCoordinates = function (city) {
                     var longitude = data.coord['lon'];
                     var latitude = data.coord['lat'];
                     getCityWeather(city, longitude, latitude);
+
+                    // saves searched city and refreshes recent city list
+                if (document.querySelector('.city-list')) {
+                    document.querySelector('.city-list').remove();
+                }
+
+                storeCity(city);
                 });
             }
         })
@@ -40,7 +48,6 @@ var getCityWeather = function (city, longitude, latitude) {
 
                 cityName.textContent = `${city} (${moment().format("M/D/YYYY")})`;
 
-                console.log(data);
                 currentWeather(data);
                 showFiveDay(data);
             });
@@ -56,6 +63,9 @@ var showTemp = function(element, temperature) {
 
 //show today's weather
 var currentWeather = function (forecast) {
+
+    var peekabooForecast = document.querySelector('.peekabooForecast');
+    peekabooForecast.classList.remove('hide');
 
     var weatherImg = document.querySelector('#todayIcon');
     var icon = forecast.current.weather[0].icon;
@@ -98,5 +108,24 @@ var showFiveDay = function(forecast) {
 
         var fiveDayHumidity = document.querySelector('#fdHumidity-' + i);
         fiveDayHumidity.textContent = forecast.daily[i].humidity;
+
+        var fiveDayWindSpeed = document.querySelector('#fdWindSpeed-' + i)
+        fiveDayWindSpeed.textContent = forecast.daily[i].wind_speed;
         }
+
+        
 }
+
+// store city
+var storeCity = function(city) {
+
+    for (var i = 0; i < cityList.length; i++) {
+        if (city === cityList[i]) {
+            cityList.splice(i, 1);
+        }
+    }
+    cityList.push(city);
+    localStorage.setItem('cities', JSON.stringify(cityList));
+}
+
+

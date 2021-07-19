@@ -22,17 +22,25 @@
                 <h3 class="card-header text-uppercase bg-secondary text-light">Search for a City</h3>
                 <div class="input-group m-4" id="cityForm">
                     <input type="text" class="form-input input-group-text col-9 mr-2" id="cityInput" name="city"/>
-                    <button type="button" class=" btn btn-info" id="searchButton"><i class="fas fa-search"></i>
+                    <button type="button" class=" btn btn-info" id="searchButton"><i class="fas fa-search"></i></button>
                 </div>
             </div>
 
-            <!-- today's Forecast -->
+            <div class="card bg-color-light mt-4" id="storedCities">
+                <h3 class="card-header text-uppercase bg-secondary text-light">City Search History</h3>
+            </div>
+        </div>
+            <!-- today's forecast -->
+         <div class="col-12 col-md-9 peekabooForecast hide">
+
             <div class="card bg-color-light mt-4 mt-md-0">
                 <h3 class="card-header text-uppercase bg-secondary text-light">Today's Forecast</h3>
                 <div class="containter">
                     <div class="row">
-                        <img class="weather-icon" id="todayIcon"/>
+                    <h4 class="ml-2">
                         <span class="align-middle" id="cityName">City Name</span>
+                        <img class="weather-icon" id="todayIcon"/>
+                    </h4>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">
@@ -65,6 +73,7 @@
                                 <p class="mb-1">High: <span id="fdHigh-1"></span> &deg;F</p>
                                 <p class="mb-1">Low: <span id="fdLow-1"></span> &deg;F</p>
                                 <p class="mb-1">Humidity: <span id="fdHumidity-1"></span>%</p>
+                                <p class="mb-1">Wind Speed: <span id="fdWindSpeed-1"></span> MPH</p></p>
                             </div>
                         </div>
 
@@ -79,6 +88,7 @@
                                 <p class="mb-1">High: <span id="fdHigh-2"></span> &deg;F</p>
                                 <p class="mb-1">Low: <span id="fdLow-2"></span> &deg;F</p>
                                 <p class="mb-1">Humidity: <span id="fdHumidity-2"></span>%</p>
+                                <p class="mb-1">Wind Speed: <span id="fdWindSpeed-2"></span> MPH</p></p>
                             </div>
                         </div>
 
@@ -93,6 +103,7 @@
                                 <p class="mb-1">High: <span id="fdHigh-3"></span> &deg;F</p>
                                 <p class="mb-1">Low: <span id="fdLow-3"></span> &deg;F</p>
                                 <p class="mb-1">Humidity: <span id="fdHumidity-3"></span>%</p>
+                                <p class="mb-1">Wind Speed: <span id="fdWindSpeed-3"></span> MPH</p></p>
                             </div>
                         </div>
 
@@ -107,6 +118,7 @@
                                 <p class="mb-1">High: <span id="fdHigh-4"></span> &deg;F</p>
                                 <p class="mb-1">Low: <span id="fdLow-4"></span> &deg;F</p>
                                 <p class="mb-1">Humidity: <span id="fdHumidity-4"></span>%</p>
+                                <p class="mb-1">Wind Speed: <span id="fdWindSpeed-4"></span> MPH</p></p>
                             </div>
                         </div>
 
@@ -121,6 +133,7 @@
                                 <p class="mb-1">High: <span id="fdHigh-5"></span> &deg;F</p>
                                 <p class="mb-1">Low: <span id="fdLow-5"></span> &deg;F</p>
                                 <p class="mb-1">Humidity: <span id="fdHumidity-5"></span>%</p>
+                                <p class="mb-1">Wind Speed: <span id="fdWindSpeed-5"></span> MPH</p></p>
                             </div>
                         </div>
         </div>
