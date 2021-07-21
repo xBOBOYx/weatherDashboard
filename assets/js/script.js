@@ -87,14 +87,6 @@ var todayWeather = function (forecast) {
     var uvIndex = document.querySelector('#todayUvIndex')
     var uvIndexText = forecast.current['uvi'];
     uvIndex.textContent = uvIndexText;
-
-    if (uvIndexText <= 2){
-        uvIndex.setAttribute = ('badge badge-success')
-    }else if (uvIndexText <= 5){
-        uvIndex.setAttribute = ('badge badge-warning')
-    }else if (uvIndexText <= 7) {
-        uvIndex.setAttribute = ('badge badge-danger');
-    }
     
 }
 
