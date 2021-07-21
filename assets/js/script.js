@@ -1,4 +1,4 @@
-//
+// Variables
 var apiKey = "1a6294fb43846f1aaf25f430265df8b2";
 var searchBtn = document.querySelector('#searchButton');
 var cityInput = document.querySelector('#cityInput');
@@ -45,10 +45,7 @@ var getCityWeather = function (city, longitude, latitude) {
     fetch(oneCallData).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-
-
                 cityName.textContent = `${city} (${moment().format("M/D/YYYY")})`;
-
                 todayWeather(data);
                 showFiveDay(data);
             });
@@ -56,6 +53,7 @@ var getCityWeather = function (city, longitude, latitude) {
     })
 }
 
+// show temp
 var showTemp = function (element, temperature) {
     var temp = document.querySelector(element);
     var tempText = Math.round(temperature);
@@ -89,6 +87,15 @@ var todayWeather = function (forecast) {
     var uvIndex = document.querySelector('#todayUvIndex')
     var uvIndexText = forecast.current['uvi'];
     uvIndex.textContent = uvIndexText;
+
+    if (uvIndexText <= 2){
+        uvIndex.setAttribute = ('badge badge-success')
+    }else if (uvIndexText <= 5){
+        uvIndex.setAttribute = ('badge badge-warning')
+    }else if (uvIndexText <= 7) {
+        uvIndex.setAttribute = ('badge badge-danger');
+    }
+    
 }
 
 // show five day forecast
